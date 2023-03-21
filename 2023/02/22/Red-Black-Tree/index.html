@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>Red Black Tree | LightString</title>
+    
+    
+        <meta name="keywords" content="data structure">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="What is Red Black Tree (RBT)?Today let’s talk about Red Black Tree (RBT). Red Black is a kind of balanced binary search tree. Unlike regular binary search trees (BST), the speed of an RBT remains rela">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Red Black Tree">
+<meta property="og:url" content="http://example.com/2023/02/22/Red-Black-Tree/index.html">
+<meta property="og:site_name" content="LightString">
+<meta property="og:description" content="What is Red Black Tree (RBT)?Today let’s talk about Red Black Tree (RBT). Red Black is a kind of balanced binary search tree. Unlike regular binary search trees (BST), the speed of an RBT remains rela">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1uj8c9Md7JGe6XXoAX6HQEvo6oaGgzPHc">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1ZgmVqbTb-yAB9iDVdC8rLuXuojKOPELT">
+<meta property="article:published_time" content="2023-02-23T03:28:39.000Z">
+<meta property="article:modified_time" content="2023-03-21T07:29:05.450Z">
+<meta property="article:author" content="LightString">
+<meta property="article:tag" content="data structure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1uj8c9Md7JGe6XXoAX6HQEvo6oaGgzPHc">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="LightString" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">LightString</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HomePage</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/4b2e531820ac079bf074f7bc0c570c52">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HomePage</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/4b2e531820ac079bf074f7bc0c570c52?s=128">
+            <h2 id="name">LightString</h2>
+            <h3 id="title">Designer &amp; Programmer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Wisconsin, Madison, US</span>
+            <a id="follow" target="_blank" href="https://github.com/dawn-cmd/" rel="external nofollow noopener noreferrer">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                2
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                1
+                <span>tag</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/zthxxx/zthxxx.github.io" target="_blank" title="github" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/7277090/zthxxx?tab=profile" target="_blank" title="stack-overflow" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://codepen.io/zthxxx/" target="_blank" title="codepen" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-codepen"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class="tooltip">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            
+                <aside id="sidebar">
+   
+        
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Red-Black-Tree" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/data-structure/" rel="tag">data structure</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/02/22/Red-Black-Tree/">
+            <time datetime="2023-02-23T03:28:39.000Z" itemprop="datePublished">2023-02-22</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/Wiki-site/raw/writing/source/_posts/Red-Black-Tree.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/Wiki-site/edit/writing/source/_posts/Red-Black-Tree.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/Wiki-site/commits/writing/source/_posts/Red-Black-Tree.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Red Black Tree
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="What-is-Red-Black-Tree-RBT"><a href="#What-is-Red-Black-Tree-RBT" class="headerlink" title="What is Red Black Tree (RBT)?"></a>What is Red Black Tree (RBT)?</h2><p>Today let’s talk about Red Black Tree (RBT). Red Black is a kind of balanced binary search tree. Unlike regular binary search trees (BST), the speed of an RBT remains relatively consistent no matter the height of the tree, due to its self-balancing property. This attribute is achieved through a set of limitations placed on the depth and color of each node in the tree.</p>
+<h2 id="Properties-of-RBT"><a href="#Properties-of-RBT" class="headerlink" title="Properties of RBT"></a>Properties of RBT</h2><ul>
+<li>All properties of normal binary search trees</li>
+<li>All nodes on trees have two colors: red and black</li>
+<li>A red node cannot has red child or parent nodes</li>
+<li>The root node must be black</li>
+<li>The number of black nodes on each path from root to leaf node must be same<br>By assigning each node with a color and by limiting the number of consecutive colored nodes, RBT ensures that the longest branches will never exceed twice the size of the shortest branches, thus providing a more stable and effective tree. For reference, here’s a visual representation of an RBT:<br><img src="https://drive.google.com/uc?export=view&id=1uj8c9Md7JGe6XXoAX6HQEvo6oaGgzPHc" alt="photo_2023-02-22_21-58-43.jpg"><br>Here’s a comparison between BST and RBT when we insert “1, 2, 3, 4, 5” in order, demonstrating why RBT is far more efficient than BST when sorted elements are inserted:<br><img src="https://drive.google.com/uc?export=view&id=1ZgmVqbTb-yAB9iDVdC8rLuXuojKOPELT" alt="photo_2023-02-22_22-32-17.jpg"><br>Obviously, BST will become extremely low effective when receiving a sorted sequence. And RBT can become more balanced under this situation.</li>
+</ul>
+<h2 id="Search-of-RBT"><a href="#Search-of-RBT" class="headerlink" title="Search of RBT"></a>Search of RBT</h2><p>Searching an RBT is just like searching any other binary search tree – if the value of the current node is larger than the target value, the search should continue on its left child; otherwise, it should continue on its right child. Here’s an example implementation using C++:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;string&gt; <span class="title">search</span><span class="params">(<span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">    Node *cur = root;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// If the current node is the goal, return it </span></span><br><span class="line">        <span class="keyword">if</span> (cur-&gt;val == val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">move</span>(cur-&gt;data);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Decide whether to continue searching left or right </span></span><br><span class="line">        cur = cur-&gt;val &lt; val ? cur-&gt;left : cur-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Returns a empty vector if not found</span></span><br><span class="line">    vector&lt;string&gt; tmp;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">move</span>(tmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rotate-Option-of-RBT"><a href="#Rotate-Option-of-RBT" class="headerlink" title="Rotate Option of RBT"></a>Rotate Option of RBT</h2><p>Rotate option is the key function that helps the tree balance itself without breaking its properties. There are two kinds of rotation: left rotation and right rotation. Left rotation let the left branch’s height + 1, right branch’s height - 1, right rotation reverse.</p>
+<h3 id="Left-Rotate"><a href="#Left-Rotate" class="headerlink" title="Left Rotate"></a>Left Rotate</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node *<span class="title">leftRotate</span><span class="params">(Node *cur)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Store cur&#x27;s right&#x27;s left node in tmp</span></span><br><span class="line">    Node *tmp = cur-&gt;right-&gt;left;</span><br><span class="line">    <span class="comment">//Set cur-&gt;right-&gt;left to cur</span></span><br><span class="line">    cur-&gt;right-&gt;left = cur;</span><br><span class="line">    <span class="comment">//Set cur-&gt;parent as cur-&gt;right</span></span><br><span class="line">    cur-&gt;right-&gt;parent = cur-&gt;parent;</span><br><span class="line">    <span class="comment">//Set cur-&gt;parent to cur-&gt;right</span></span><br><span class="line">    cur-&gt;parent = cur-&gt;right;</span><br><span class="line">    <span class="comment">//Set cur-&gt;right to the previously stored tmp</span></span><br><span class="line">    <span class="comment">//node</span></span><br><span class="line">    cur-&gt;right = tmp;</span><br><span class="line">    <span class="comment">//Set cur-&gt;parent-&gt;left to cur</span></span><br><span class="line">    cur-&gt;parent-&gt;left = cur;</span><br><span class="line">    <span class="comment">//Set tmp&#x27;s parent to cur</span></span><br><span class="line">    tmp-&gt;parent = cur;</span><br><span class="line">    <span class="comment">//Determine root node when cur is being rotated.</span></span><br><span class="line">    <span class="keyword">if</span> (root == cur) &#123;</span><br><span class="line">        root = cur-&gt;parent;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//Check if Parent of the current node has cur as its left or right child</span></span><br><span class="line">        <span class="keyword">if</span> (cur-&gt;parent-&gt;parent-&gt;left == cur) &#123;</span><br><span class="line">            cur-&gt;parent-&gt;parent-&gt;left = cur-&gt;parent;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cur-&gt;parent-&gt;parent-&gt;right = cur-&gt;parent;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Return the new parent node</span></span><br><span class="line">    <span class="keyword">return</span> cur-&gt;parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Right-rotate"><a href="#Right-rotate" class="headerlink" title="Right rotate"></a>Right rotate</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node *<span class="title">rightRotate</span><span class="params">(Node *cur)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Store the subsidiary node before changing its pointer</span></span><br><span class="line">    Node *tmp = cur-&gt;left-&gt;right;</span><br><span class="line">    <span class="comment">// Make the connection between the right child of left child and the current node</span></span><br><span class="line">    cur-&gt;left-&gt;right = cur;</span><br><span class="line">    <span class="comment">// Update the parent pointer of the right child of left child</span></span><br><span class="line">    cur-&gt;left-&gt;parent = cur-&gt;parent;</span><br><span class="line">    <span class="comment">// Move the parent pointer of the current node to its left child</span></span><br><span class="line">    cur-&gt;parent = cur-&gt;left;</span><br><span class="line">    <span class="comment">// Replace the right child of the current node with the auxiliary node</span></span><br><span class="line">    cur-&gt;left = tmp;</span><br><span class="line">    <span class="comment">// Connect the auxiliary node with the current node</span></span><br><span class="line">    cur-&gt;parent-&gt;right = cur;</span><br><span class="line">    <span class="comment">// Move parent pointer from auxiliary node to cur</span></span><br><span class="line">    tmp-&gt;parent = cur;</span><br><span class="line">    <span class="comment">// Check if the current node is root or not</span></span><br><span class="line">    <span class="keyword">if</span> (root == cur) &#123;</span><br><span class="line">        <span class="comment">// If it&#x27;s, update the root pointer to its parent</span></span><br><span class="line">        root = cur-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Check if the grand parent of the current node has a left or right child</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cur-&gt;parent-&gt;parent-&gt;left == cur) &#123;</span><br><span class="line">        <span class="comment">// If it has a left child, that must be the parent of the current node</span></span><br><span class="line">        cur-&gt;parent-&gt;parent-&gt;left = cur-&gt;parent;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// If it has a right child, that must be the parent of the current node</span></span><br><span class="line">        cur-&gt;parent-&gt;parent-&gt;right = cur-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cur-&gt;parent;<span class="comment">// Return new node after zig operation</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Insert-option-of-RBT"><a href="#Insert-option-of-RBT" class="headerlink" title="Insert option of RBT"></a>Insert option of RBT</h2><p>Because of the properties of RBT, its insert option will be more complicated than normal BST. Specifically, we can break the insert option into two steps: insert and balance. Many platforms combine the two parts with together, but from my perspective, it is not convenient for understanding.</p>
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h3><p>The insert option is similar to BST’s insert option. Find the approrate position and make a new node on the tree with the target value and key. When it comes to RBT, we only need to care about the new node must be RED at first.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> val, <span class="type">const</span> string &amp;data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        root = <span class="keyword">new</span> Node&#123;val&#125;;</span><br><span class="line">        root-&gt;is_red = <span class="number">0</span>;</span><br><span class="line">        root-&gt;data.<span class="built_in">emplace_back</span>(data);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Node *cur = root;</span><br><span class="line">    Node *pre = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        pre = cur;</span><br><span class="line">        <span class="keyword">if</span> (val == cur-&gt;val) &#123;</span><br><span class="line">            cur-&gt;data.<span class="built_in">emplace_back</span>(data);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (val &lt; cur-&gt;val) &#123;</span><br><span class="line">            cur = cur-&gt;left;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (val &gt; cur-&gt;val) &#123;</span><br><span class="line">            cur = cur-&gt;right;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cur = <span class="keyword">new</span> Node&#123;val&#125;;</span><br><span class="line">    cur-&gt;data.<span class="built_in">emplace_back</span>(data);</span><br><span class="line">    cur-&gt;is_red = <span class="number">1</span>;</span><br><span class="line">    cur-&gt;parent = pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Balance"><a href="#Balance" class="headerlink" title="Balance"></a>Balance</h3><p>The balance option is the key of RBT, which implement by left rotation and right rotation. Here are the strategy of balance:</p>
+<ol>
+<li>When the current node is the root, just turn it black.</li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2023/02/13/SelfDescription/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Self Description</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            LightString &copy; 2023 
+            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
