@@ -180,6 +180,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            applications
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a></li>  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             data structure & algorithm
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/02/22/Red-Black-Tree/">Red Black Tree</a></li>  <li class="file"><a href="/2023/03/21/Red-Black-Tree-zh-CN/">Red-Black-Tree(zh-CN)</a></li>  </ul> 
@@ -256,7 +265,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>tag cloud</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a>
+            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a> <a href="/tags/openAI/" style="font-size: 10px;">openAI</a>
         </div>
     </div>
 
@@ -265,6 +274,214 @@
 </aside>
             
             <section id="main">
+        <article id="post-A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/applications/">applications</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/openAI/" rel="tag">openAI</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">
+            <time datetime="2023-03-24T21:51:14.000Z" itemprop="datePublished">2023-03-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/raw/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/edit/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/commits/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文介绍了一种功能强大的翻译工具，将 OpenAI 的先进 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具可以识别输入文本的语言，将中文文本翻译成英文或将英文文本翻译成中文，并用中文提供解释和示例。本文阐述了核心功能，与 Wox 启动器的交互以及使用 pyperclip 库实现的剪贴板集成。我们还提供了一段代码示例，以演示其实现。</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在本文中，我们介绍了一种功能强大的翻译工具，将 OpenAI 的尖端 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具旨在识别输入文本的语言，将中文文本翻译成英文或其他语言的文本翻译成中文，并提供中文解释和示例。</p>
+<h2 id="利用-GPT-3-5-Turbo"><a href="#利用-GPT-3-5-Turbo" class="headerlink" title="利用 GPT-3.5 Turbo"></a>利用 GPT-3.5 Turbo</h2><p>OpenAI 的 GPT-3.5 Turbo 语言模型以高效处理复杂语言任务而闻名。该翻译工具利用模型的功能，通过实现一个翻译函数来接收文本输入，构建一个格式化的问题发送给模型，并接收响应。然后解析响应，提取相关信息并将其作为列表返回。您可以在此处获取有关 ChatAPI 的更多信息：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://platform.openai.com/docs/api-reference">openAI 文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">translate</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>:</span><br><span class="line">    openai.api_key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    question = <span class="string">&quot;1: Figure out the text&#x27;s language\n2: If language == Chinese: translate it into English; If language == Chinese: translate the text into English; \n3: Output in the following format:\nlanguage: &#123;the language of original text&#125;\ntranslate: &#123;text after translated into chinese, if it is chinese, translate it into english&#125;\nexplanation: &#123;explain it in Chinese&#125;\nexample: &#123;example sentence&#125;\nFor example:text: &#123; Hello &#125;\nlanguage: English\ntranslate: 你好\nexplanation: 这是常用的问候语\nexample: Hello, how are you today?\n text: &quot;</span></span><br><span class="line">    question += <span class="string">&quot;&#123; &quot;</span> + text + <span class="string">&quot; &#125;&quot;</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=[&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: question</span><br><span class="line">        &#125;],</span><br><span class="line">        temperature=<span class="number">1.5</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># print(response)</span></span><br><span class="line">    response = <span class="built_in">list</span>(response.split(<span class="string">&quot;\n&quot;</span>))</span><br><span class="line">    response.append(<span class="string">&quot;usage: &quot;</span> + <span class="built_in">str</span>(usage))</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/applications/">applications</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/openAI/" rel="tag">openAI</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">
+            <time datetime="2023-03-24T21:26:55.000Z" itemprop="datePublished">2023-03-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/raw/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/edit/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/commits/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This article presents a powerful translation tool that combines the advanced GPT-3.5 Turbo language model by OpenAI with the user-friendly Wox launcher plugin system. The tool identifies the input text’s language, translates Chinese text to English or English text to Chinese, and provides an explanation and example in Chinese. The article explains the core functionality, interaction with Wox launcher, and clipboard integration using the pyperclip library. We also provide an example of the code to demonstrate its implementation.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In this article, we introduce a powerful translation tool that integrates the cutting-edge GPT-3.5 Turbo language model by OpenAI with the user-friendly Wox launcher plugin system. This tool is designed to identify the input text’s language, translate Chinese text to English or other languages’ text to Chinese, and provide an explanation and an example in Chinese.</p>
+<h2 id="Harnessing-GPT-3-5-Turbo"><a href="#Harnessing-GPT-3-5-Turbo" class="headerlink" title="Harnessing GPT-3.5 Turbo"></a>Harnessing GPT-3.5 Turbo</h2><p>The GPT-3.5 Turbo language model by OpenAI is known for its ability to handle complex language tasks efficiently. This translation tool utilizes the model’s capabilities by implementing a translate function that takes a text input, constructs a formatted question to send to the model, and receives a response. The response is then parsed, extracting the relevant information and returning it as a list. You can get more information about ChatAPI here: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://platform.openai.com/docs/api-reference">openAI documentation</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">translate</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>:</span><br><span class="line">    openai.api_key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    question = <span class="string">&quot;1: Figure out the text&#x27;s language\n2: If language == Chinese: translate it into English; If language == Chinese: translate the text into English; \n3: Output in the following format:\nlanguage: &#123;the language of original text&#125;\ntranslate: &#123;text after translated into chinese, if it is chinese, translate it into english&#125;\nexplanation: &#123;explain it in Chinese&#125;\nexample: &#123;example sentence&#125;\nFor example:text: &#123; Hello &#125;\nlanguage: English\ntranslate: 你好\nexplanation: 这是常用的问候语\nexample: Hello, how are you today?\n text: &quot;</span></span><br><span class="line">    question += <span class="string">&quot;&#123; &quot;</span> + text + <span class="string">&quot; &#125;&quot;</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=[&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: question</span><br><span class="line">        &#125;],</span><br><span class="line">        temperature=<span class="number">1.5</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># print(response)</span></span><br><span class="line">    response = <span class="built_in">list</span>(response.split(<span class="string">&quot;\n&quot;</span>))</span><br><span class="line">    response.append(<span class="string">&quot;usage: &quot;</span> + <span class="built_in">str</span>(usage))</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-Red-Black-Tree-zh-CN" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         

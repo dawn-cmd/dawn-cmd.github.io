@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN) | LightString</title>
+    
+    
+        <meta name="keywords" content="openAI">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="摘要本文介绍了一种功能强大的翻译工具，将 OpenAI 的先进 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具可以识别输入文本的语言，将中文文本翻译成英文或将英文文本翻译成中文，并用中文提供解释和示例。本文阐述了核心功能，与 Wox 启动器的交互以及使用 pyperclip 库实现的剪贴板集成。我们还提供了一段代码示例，以演示其实现。 引言在本文中，我们介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)">
+<meta property="og:url" content="http://example.com/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/index.html">
+<meta property="og:site_name" content="LightString">
+<meta property="og:description" content="摘要本文介绍了一种功能强大的翻译工具，将 OpenAI 的先进 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具可以识别输入文本的语言，将中文文本翻译成英文或将英文文本翻译成中文，并用中文提供解释和示例。本文阐述了核心功能，与 Wox 启动器的交互以及使用 pyperclip 库实现的剪贴板集成。我们还提供了一段代码示例，以演示其实现。 引言在本文中，我们介绍">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://drive.google.com/uc?export=view&id=1MsxBqOFNjsUQT37eFcdn9uUKIt_mwuJl">
+<meta property="article:published_time" content="2023-03-24T21:51:14.000Z">
+<meta property="article:modified_time" content="2023-03-24T21:57:53.891Z">
+<meta property="article:author" content="LightString">
+<meta property="article:tag" content="openAI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1MsxBqOFNjsUQT37eFcdn9uUKIt_mwuJl">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="LightString" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/icon.png">
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">LightString</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">HomePage</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">HomePage</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            applications
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a></li>  <li class="file active"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            data structure & algorithm
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/02/22/Red-Black-Tree/">Red Black Tree</a></li>  <li class="file"><a href="/2023/03/21/Red-Black-Tree-zh-CN/">Red-Black-Tree(zh-CN)</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/02/13/SelfDescription/">Self Description</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>tag cloud</span></h3>
+        <div class="widget tagcloud">
+            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a> <a href="/tags/openAI/" style="font-size: 10px;">openAI</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/applications/">applications</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/openAI/" rel="tag">openAI</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">
+            <time datetime="2023-03-24T21:51:14.000Z" itemprop="datePublished">2023-03-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/raw/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/edit/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/commits/writing/source/_posts/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-GPT-3-5-Turbo"><span class="toc-number">3.</span> <span class="toc-text">利用 GPT-3.5 Turbo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-Wox-%E5%90%AF%E5%8A%A8%E5%99%A8%E9%9B%86%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">与 Wox 启动器集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E5%89%AA%E8%B4%B4%E6%9D%BF"><span class="toc-number">5.</span> <span class="toc-text">集成剪贴板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA"><span class="toc-number">6.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">代码</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文介绍了一种功能强大的翻译工具，将 OpenAI 的先进 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具可以识别输入文本的语言，将中文文本翻译成英文或将英文文本翻译成中文，并用中文提供解释和示例。本文阐述了核心功能，与 Wox 启动器的交互以及使用 pyperclip 库实现的剪贴板集成。我们还提供了一段代码示例，以演示其实现。</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在本文中，我们介绍了一种功能强大的翻译工具，将 OpenAI 的尖端 GPT-3.5 Turbo 语言模型与用户友好的 Wox 启动器插件系统相结合。该工具旨在识别输入文本的语言，将中文文本翻译成英文或其他语言的文本翻译成中文，并提供中文解释和示例。</p>
+<h2 id="利用-GPT-3-5-Turbo"><a href="#利用-GPT-3-5-Turbo" class="headerlink" title="利用 GPT-3.5 Turbo"></a>利用 GPT-3.5 Turbo</h2><p>OpenAI 的 GPT-3.5 Turbo 语言模型以高效处理复杂语言任务而闻名。该翻译工具利用模型的功能，通过实现一个翻译函数来接收文本输入，构建一个格式化的问题发送给模型，并接收响应。然后解析响应，提取相关信息并将其作为列表返回。您可以在此处获取有关 ChatAPI 的更多信息：<a target="_blank" rel="external nofollow noopener noreferrer" href="https://platform.openai.com/docs/api-reference">openAI 文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">translate</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>:</span><br><span class="line">    openai.api_key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    question = <span class="string">&quot;1: Figure out the text&#x27;s language\n2: If language == Chinese: translate it into English; If language == Chinese: translate the text into English; \n3: Output in the following format:\nlanguage: &#123;the language of original text&#125;\ntranslate: &#123;text after translated into chinese, if it is chinese, translate it into english&#125;\nexplanation: &#123;explain it in Chinese&#125;\nexample: &#123;example sentence&#125;\nFor example:text: &#123; Hello &#125;\nlanguage: English\ntranslate: 你好\nexplanation: 这是常用的问候语\nexample: Hello, how are you today?\n text: &quot;</span></span><br><span class="line">    question += <span class="string">&quot;&#123; &quot;</span> + text + <span class="string">&quot; &#125;&quot;</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=[&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: question</span><br><span class="line">        &#125;],</span><br><span class="line">        temperature=<span class="number">1.5</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># print(response)</span></span><br><span class="line">    response = <span class="built_in">list</span>(response.split(<span class="string">&quot;\n&quot;</span>))</span><br><span class="line">    response.append(<span class="string">&quot;usage: &quot;</span> + <span class="built_in">str</span>(usage))</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<h2 id="与-Wox-启动器集成"><a href="#与-Wox-启动器集成" class="headerlink" title="与 Wox 启动器集成"></a>与 Wox 启动器集成</h2><p>Wox 启动器插件系统为用户提供了一个方便的互动的界面来使用翻译工具。通过创建一个继承自 Wox 类的主类，该工具定义了一个查询方法来处理用户输入并显示结果。当用户输入一个以 “&amp;” 结尾的关键字时，代码调用翻译函数，将响应显示为可选择的项目列表。您可以在此处获取有关 Wox 启动器插件开发的更多信息：<a target="_blank" rel="external nofollow noopener noreferrer" href="http://doc.wox.one/">Wox 文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">main</span>(<span class="title class_ inherited__">Wox</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">self, keyword: <span class="built_in">str</span></span>):</span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> keyword.endswith(<span class="string">&#x27;&amp;&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> results</span><br><span class="line">        response: <span class="built_in">list</span>[<span class="built_in">str</span>] = translate(keyword[:-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">for</span> reponse <span class="keyword">in</span> response:</span><br><span class="line">            results.append(&#123;</span><br><span class="line">                <span class="string">&quot;IcoPath&quot;</span>: <span class="string">&quot;Images/ico.png&quot;</span>,</span><br><span class="line">                <span class="string">&quot;Title&quot;</span>: reponse,</span><br><span class="line">                <span class="string">&quot;SubTitle&quot;</span>: <span class="string">&quot;Copy&quot;</span>,</span><br><span class="line">                <span class="string">&quot;JsonRPCAction&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;method&quot;</span>: <span class="string">&quot;copy&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;parameters&quot;</span>: [reponse],</span><br><span class="line">                    <span class="string">&quot;dontHideAfterAction&quot;</span>: <span class="literal">False</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">copy</span>(<span class="params">self, word: <span class="built_in">str</span></span>):</span><br><span class="line">        pyperclip.copy(word)</span><br></pre></td></tr></table></figure>
+
+<h2 id="集成剪贴板"><a href="#集成剪贴板" class="headerlink" title="集成剪贴板"></a>集成剪贴板</h2><p>为了提高用户体验，脚本集成了 pyperclip 库，使用户只需点击即可将所选文本复制到剪贴板。在选择结果时，触发复制方法，轻松为用户复制文本以便粘贴到其他应用程序中。</p>
+<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><p><img src="https://drive.google.com/uc?export=view&id=1MsxBqOFNjsUQT37eFcdn9uUKIt_mwuJl" alt="Display"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openai</span><br><span class="line"><span class="keyword">from</span> wox <span class="keyword">import</span> Wox</span><br><span class="line"><span class="keyword">import</span> pyperclip</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">translate</span>(<span class="params">text: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>:</span><br><span class="line">    openai.api_key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    question = <span class="string">&quot;1: Figure out the text&#x27;s language\n2: If language == Chinese: translate it into English; If language == Chinese: translate the text into English; \n3: Output in the following format:\nlanguage: &#123;the language of original text&#125;\ntranslate: &#123;text after translated into chinese, if it is chinese, translate it into english&#125;\nexplanation: &#123;explain it in Chinese&#125;\nexample: &#123;example sentence&#125;\nFor example:text: &#123; Hello &#125;\nlanguage: English\ntranslate: 你好\nexplanation: 这是常用的问候语\nexample: Hello, how are you today?\n text: &quot;</span></span><br><span class="line">    question += <span class="string">&quot;&#123; &quot;</span> + text + <span class="string">&quot; &#125;&quot;</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=[&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: question</span><br><span class="line">        &#125;],</span><br><span class="line">        temperature=<span class="number">1.5</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    response = <span class="built_in">list</span>(response.split(<span class="string">&quot;\n&quot;</span>))</span><br><span class="line">    response.append(<span class="string">&quot;usage: &quot;</span> + <span class="built_in">str</span>(usage))</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">main</span>(<span class="title class_ inherited__">Wox</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">self, keyword: <span class="built_in">str</span></span>):</span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> keyword.endswith(<span class="string">&#x27;&amp;&#x27;</span>):</span><br><span class="line">            <span class="keyword">return</span> results</span><br><span class="line">        response: <span class="built_in">list</span>[<span class="built_in">str</span>] = translate(keyword[:-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">for</span> reponse <span class="keyword">in</span> response:</span><br><span class="line">            results.append(&#123;</span><br><span class="line">                <span class="string">&quot;IcoPath&quot;</span>: <span class="string">&quot;Images/ico.png&quot;</span>,</span><br><span class="line">                <span class="string">&quot;Title&quot;</span>: reponse,</span><br><span class="line">                <span class="string">&quot;SubTitle&quot;</span>: <span class="string">&quot;Copy&quot;</span>,</span><br><span class="line">                <span class="string">&quot;JsonRPCAction&quot;</span>: &#123;</span><br><span class="line">                    <span class="string">&quot;method&quot;</span>: <span class="string">&quot;copy&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;parameters&quot;</span>: [reponse],</span><br><span class="line">                    <span class="string">&quot;dontHideAfterAction&quot;</span>: <span class="literal">False</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">copy</span>(<span class="params">self, word: <span class="built_in">str</span></span>):</span><br><span class="line">        pyperclip.copy(word)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            LightString &copy; 2023 
+            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
