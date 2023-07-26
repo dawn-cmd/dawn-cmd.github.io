@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/</loc>
+    
+    <lastmod>2023-07-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/</loc>
     
     <lastmod>2023-03-26</lastmod>
@@ -76,7 +85,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2023-07-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,14 +93,14 @@
   
   <url>
     <loc>http://example.com/tags/data-structure/</loc>
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/openAI/</loc>
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -100,14 +109,14 @@
   
   <url>
     <loc>http://example.com/categories/data-structure-algorithm/</loc>
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/applications/</loc>
-    <lastmod>2023-05-15</lastmod>
+    <lastmod>2023-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

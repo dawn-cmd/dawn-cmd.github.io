@@ -186,7 +186,7 @@
                             &nbsp;
                             applications
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a></li>  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a></li>  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a></li>  <li class="file"><a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -269,7 +269,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title"><span>tag cloud</span></h3>
         <div class="widget tagcloud">
-            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a> <a href="/tags/openAI/" style="font-size: 10px;">openAI</a>
+            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a> <a href="/tags/openAI/" style="font-size: 20px;">openAI</a>
         </div>
     </div>
 
@@ -278,6 +278,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/applications/">applications</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/openAI/" rel="tag">openAI</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">
+            <time datetime="2023-07-26T02:54:21.000Z" itemprop="datePublished">2023-07-25</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/raw/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/edit/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/commits/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">An Overview of a Python Script for Automated Chat Responses using OpenAI&#39;s GPT-3</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a>Abstraction</h2><p>This Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language understanding capabilities to generate contextually relevant responses to incoming messages.</p>
+<h2 id="Project-Design"><a href="#Project-Design" class="headerlink" title="Project Design"></a>Project Design</h2><p>The project is structured around two main functions: the <code>GPT</code> function, which interacts with the GPT-3 model, and the <code>main</code> function, which handles the user interface and message processing in WeChat.</p>
+<h3 id="GPT-Function"><a href="#GPT-Function" class="headerlink" title="GPT Function"></a>GPT Function</h3><p>The <code>GPT</code> function is designed to generate responses using the GPT-3 model. It takes as input a string <code>text</code> representing the incoming message and a list <code>record</code> that maintains the conversation history. The function appends the incoming message to the conversation record, sets the OpenAI API key, and creates a completion using the OpenAI API. The completion is a response generated by the GPT-3 model based on the conversation history. The function then extracts the assistant’s message from the response, appends it to the conversation record, and returns it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define a function to handle the interaction with the GPT-3 model</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GPT</span>(<span class="params">text: <span class="built_in">str</span>, record: <span class="type">List</span>[<span class="built_in">dict</span>]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="comment"># Append the user&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: text&#125;)</span><br><span class="line">    <span class="comment"># Print the user&#x27;s message for debugging purposes</span></span><br><span class="line">    <span class="built_in">print</span>(text)</span><br><span class="line">    <span class="comment"># Set the OpenAI API key</span></span><br><span class="line">    openai.api_key = apiKey</span><br><span class="line">    <span class="comment"># Define the model ID</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    <span class="comment"># Initialize a question string with the user&#x27;s text</span></span><br><span class="line">    question = <span class="string">&quot;###&quot;</span> + text + <span class="string">&quot;###&quot;</span></span><br><span class="line">    <span class="comment"># Create a completion using the OpenAI API</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=record,</span><br><span class="line">        temperature=<span class="number">0.1</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># Extract the total token usage from the response for debugging purposes</span></span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    <span class="comment"># Extract the content from the assistant&#x27;s message in the response</span></span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># Append the assistant&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: response&#125;)</span><br><span class="line">    <span class="comment"># Return the assistant&#x27;s response</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
