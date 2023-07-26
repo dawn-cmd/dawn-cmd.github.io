@@ -56,15 +56,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/02/13/SelfDescription/</loc>
-    
-    <lastmod>2023-03-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/index.html</loc>
     
     <lastmod>2023-03-21</lastmod>
