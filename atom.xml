@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LightString</title>
   
-  <subtitle>LightString</subtitle>
+  <subtitle>HuaiYuan_Jing</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
@@ -10,7 +10,7 @@
   <id>http://example.com/</id>
   
   <author>
-    <name>LightString</name>
+    <name>HuaiYuan_Jing</name>
     
   </author>
   
