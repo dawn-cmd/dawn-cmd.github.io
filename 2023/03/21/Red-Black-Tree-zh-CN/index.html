@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Red-Black-Tree(zh-CN) | LightString</title>
+    <title>Red-Black-Tree(zh-CN) | HuaiYuan_Jing</title>
     
     
         <meta name="keywords" content="data structure">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Red-Black-Tree(zh-CN)">
 <meta property="og:url" content="http://example.com/2023/03/21/Red-Black-Tree-zh-CN/index.html">
-<meta property="og:site_name" content="LightString">
+<meta property="og:site_name" content="HuaiYuan_Jing">
 <meta property="og:description" content="English Version 摘要红黑树是一种自平衡的二叉搜索树，用于按排序顺序存储和检索元素，并具有O（log n）时间复杂度的所有主要操作。它们被设计为内存高效和平衡，使它们比其他平衡树如AVL树更高效。在本文中，我们讨论了在Rust中实现红黑树，这是一种为性能和安全性而设计的现代编程语言。我们讨论了树的结构，以及插入，删除和搜索的函数。此外，我们还讨论了修复函数，用于在每次插入和删除后恢复">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1uj8c9Md7JGe6XXoAX6HQEvo6oaGgzPHc">
@@ -27,7 +27,7 @@
     
 
     
-        <link rel="alternate" href="/atom.xml" title="LightString" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="HuaiYuan_Jing" type="application/atom+xml">
     
 
     
@@ -81,9 +81,11 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">LightString</span>
+                <span class="site-title">HuaiYuan_Jing</span>
             </a>
             <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/about">About</a>
                 
                     <a class="main-nav-link" href="/">HomePage</a>
                 
@@ -92,10 +94,6 @@
                     <a class="main-nav-link" href="/categories">Categories</a>
                 
                     <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-                    <a class="main-nav-link" href="/links">Links</a>
                 
             </nav>
             
@@ -144,6 +142,8 @@
         <table class="menu outer">
             <tr>
                 
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
                     <td><a class="main-nav-link" href="/">HomePage</a></td>
                 
                     <td><a class="main-nav-link" href="/archives">Archives</a></td>
@@ -151,10 +151,6 @@
                     <td><a class="main-nav-link" href="/categories">Categories</a></td>
                 
                     <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                    <td><a class="main-nav-link" href="/links">Links</a></td>
                 
                 <td>
                     
