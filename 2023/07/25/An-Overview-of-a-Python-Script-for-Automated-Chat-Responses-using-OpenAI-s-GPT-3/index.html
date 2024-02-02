@@ -1,348 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    
-    <title>An Overview of a Python Script for Automated Chat Responses using OpenAI&#39;s GPT-3 | HuaiYuan_Jing</title>
-    
-    
-        <meta name="keywords" content="openAI">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="AbstractionThis Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dawn-cmd.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="AbstractionThis Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language">
 <meta property="og:type" content="article">
 <meta property="og:title" content="An Overview of a Python Script for Automated Chat Responses using OpenAI&#39;s GPT-3">
-<meta property="og:url" content="http://example.com/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/index.html">
+<meta property="og:url" content="https://dawn-cmd.github.io/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/index.html">
 <meta property="og:site_name" content="HuaiYuan_Jing">
 <meta property="og:description" content="AbstractionThis Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-26T02:54:21.000Z">
-<meta property="article:modified_time" content="2023-07-26T03:22:31.402Z">
+<meta property="article:published_time" content="2023-07-26T03:54:21.000Z">
+<meta property="article:modified_time" content="2023-07-26T03:22:31.000Z">
 <meta property="article:author" content="HuaiYuan_Jing">
 <meta property="article:tag" content="openAI">
 <meta name="twitter:card" content="summary">
-    
 
-    
-        <link rel="alternate" href="/atom.xml" title="HuaiYuan_Jing" type="application/atom+xml">
-    
-
-    
-        <link rel="icon" href="/icon.png">
-    
-
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/open-sans/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+<link rel="canonical" href="https://dawn-cmd.github.io/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">
 
 
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    
-<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    
-<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
-
-    
-    
-        
-<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-
-    
-    
-        
-<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-
-    
-    
-    
-    
-
-
-    
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">HuaiYuan_Jing</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-                    <a class="main-nav-link" href="/">HomePage</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-            </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
 </script>
 
-<script src="/js/insight.js"></script>
+  <title>An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3 | HuaiYuan_Jing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="HuaiYuan_Jing" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HuaiYuan_Jing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">HuaiYuan_Jing</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
 
 
 </div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                    <td><a class="main-nav-link" href="/">HomePage</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
-    </div>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-</header>
-
-        <div class="outer">
-            
-            
-                <aside id="sidebar">
-   
-        
-    <div class="widget-wrap" id="categories">
-        <h3 class="widget-title">
-            <span>categories</span>
-            &nbsp;
-            <a id="allExpand" href="#">
-                <i class="fa fa-angle-double-down fa-2x"></i>
-            </a>
-        </h3>
-        
-        
-        
-         <ul class="unstyled" id="tree"> 
-                    <li class="directory open">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
-                            &nbsp;
-                            applications
-                        </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing</a></li>  <li class="file"><a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</a></li>  <li class="file active"><a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3</a></li>  </ul> 
-                    </li> 
-                    
-                    <li class="directory">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
-                            &nbsp;
-                            data structure & algorithm
-                        </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2023/02/22/Red-Black-Tree/">Red Black Tree</a></li>  <li class="file"><a href="/2023/03/21/Red-Black-Tree-zh-CN/">Red-Black-Tree(zh-CN)</a></li>  </ul> 
-                    </li> 
-                     </ul> 
-    </div>
-    <script>
-        $(document).ready(function() {
-            var iconFolderOpenClass  = 'fa-folder-open';
-            var iconFolderCloseClass = 'fa-folder';
-            var iconAllExpandClass = 'fa-angle-double-down';
-            var iconAllPackClass = 'fa-angle-double-up';
-            // Handle directory-tree expansion:
-            // 左键单独展开目录
-            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
-                event.preventDefault();
-
-                var icon = $(this).children('.fa');
-                var expanded = icon.hasClass(iconFolderOpenClass);
-                var subtree = $(this).siblings('ul');
-                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
-                if (expanded) {
-                    if (typeof subtree != 'undefined') {
-                        subtree.slideUp({ duration: 100 });
-                    }
-                    icon.addClass(iconFolderCloseClass);
-                } else {
-                    if (typeof subtree != 'undefined') {
-                        subtree.slideDown({ duration: 100 });
-                    }
-                    icon.addClass(iconFolderOpenClass);
-                }
-            });
-            // 右键展开下属所有目录
-            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
-                event.preventDefault();
-                
-                var icon = $(this).children('.fa');
-                var expanded = icon.hasClass(iconFolderOpenClass);
-                var listNode = $(this).siblings('ul');
-                var subtrees = $.merge(listNode.find('li ul'), listNode);
-                var icons = $.merge(listNode.find('.fa'), icon);
-                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
-                if(expanded) {
-                    subtrees.slideUp({ duration: 100 });
-                    icons.addClass(iconFolderCloseClass);
-                } else {
-                    subtrees.slideDown({ duration: 100 });
-                    icons.addClass(iconFolderOpenClass);
-                }
-            })
-            // 展开关闭所有目录按钮
-            $(document).on('click', '#allExpand', function (event) {
-                event.preventDefault();
-                
-                var icon = $(this).children('.fa');
-                var expanded = icon.hasClass(iconAllExpandClass);
-                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
-                if(expanded) {
-                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
-                    $('#categories li ul').slideDown({ duration: 100 });
-                    icon.addClass(iconAllPackClass);
-                } else {
-                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
-                    $('#categories li ul').slideUp({ duration: 100 });
-                    icon.addClass(iconAllExpandClass);
-                }
-            });  
-        });
-    </script>
+    </header>
 
     
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title"><span>tag cloud</span></h3>
-        <div class="widget tagcloud">
-            <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a> <a href="/tags/openAI/" style="font-size: 20px;">openAI</a>
-        </div>
-    </div>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
             
-            <section id="main"><article id="post-An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/applications/">applications</a>
-    </div>
 
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/openAI/" rel="tag">openAI</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">
-            <time datetime="2023-07-26T02:54:21.000Z" itemprop="datePublished">2023-07-25</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/raw/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/edit/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/dawn-cmd/dawn-cmd.github.io/commits/writing/source/_posts/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
     
-        <h1 class="article-title" itemprop="name">
-            An Overview of a Python Script for Automated Chat Responses using OpenAI&#39;s GPT-3
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dawn-cmd.github.io/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="HuaiYuan_Jing">
+      <meta itemprop="description" content="Display Website">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuaiYuan_Jing">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3
         </h1>
-    
 
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Abstraction"><span class="toc-number">1.</span> <span class="toc-text">Abstraction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-Design"><span class="toc-number">2.</span> <span class="toc-text">Project Design</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT-Function"><span class="toc-number">2.1.</span> <span class="toc-text">GPT Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-Function"><span class="toc-number">2.2.</span> <span class="toc-text">Main Function</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Execution"><span class="toc-number">3.</span> <span class="toc-text">Execution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Complete-Code"><span class="toc-number">5.</span> <span class="toc-text">Complete Code</span></a></li></ol>
-                </div>
-            
-        
-        
-            <h2 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a>Abstraction</h2><p>This Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language understanding capabilities to generate contextually relevant responses to incoming messages.</p>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-25 22:54:21 / Modified: 22:22:31" itemprop="dateCreated datePublished" datetime="2023-07-25T22:54:21-05:00">2023-07-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/applications/" itemprop="url" rel="index"><span itemprop="name">applications</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a>Abstraction</h2><p>This Python project is designed to automate chat responses in the popular messaging application, WeChat (微信), using OpenAI’s GPT-3 model. The project leverages the power of GPT-3’s language understanding capabilities to generate contextually relevant responses to incoming messages.</p>
 <h2 id="Project-Design"><a href="#Project-Design" class="headerlink" title="Project Design"></a>Project Design</h2><p>The project is structured around two main functions: the <code>GPT</code> function, which interacts with the GPT-3 model, and the <code>main</code> function, which handles the user interface and message processing in WeChat.</p>
 <h3 id="GPT-Function"><a href="#GPT-Function" class="headerlink" title="GPT Function"></a>GPT Function</h3><p>The <code>GPT</code> function is designed to generate responses using the GPT-3 model. It takes as input a string <code>text</code> representing the incoming message and a list <code>record</code> that maintains the conversation history. The function appends the incoming message to the conversation record, sets the OpenAI API key, and creates a completion using the OpenAI API. The completion is a response generated by the GPT-3 model based on the conversation history. The function then extracts the assistant’s message from the response, appends it to the conversation record, and returns it.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define a function to handle the interaction with the GPT-3 model</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GPT</span>(<span class="params">text: <span class="built_in">str</span>, record: <span class="type">List</span>[<span class="built_in">dict</span>]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="comment"># Append the user&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: text&#125;)</span><br><span class="line">    <span class="comment"># Print the user&#x27;s message for debugging purposes</span></span><br><span class="line">    <span class="built_in">print</span>(text)</span><br><span class="line">    <span class="comment"># Set the OpenAI API key</span></span><br><span class="line">    openai.api_key = apiKey</span><br><span class="line">    <span class="comment"># Define the model ID</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    <span class="comment"># Initialize a question string with the user&#x27;s text</span></span><br><span class="line">    question = <span class="string">&quot;###&quot;</span> + text + <span class="string">&quot;###&quot;</span></span><br><span class="line">    <span class="comment"># Create a completion using the OpenAI API</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=record,</span><br><span class="line">        temperature=<span class="number">0.1</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># Extract the total token usage from the response for debugging purposes</span></span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    <span class="comment"># Extract the content from the assistant&#x27;s message in the response</span></span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># Append the assistant&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: response&#125;)</span><br><span class="line">    <span class="comment"># Return the assistant&#x27;s response</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
@@ -356,123 +221,212 @@
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In summary, this Python project is a sophisticated example of how to use OpenAI’s GPT-3 model to automate responses in a chat application. It demonstrates how to interact with the GPT-3 model, handle user interface elements in a chat application, and manage conversation history for context-aware responses. The project is a testament to the potential of AI in automating tasks and enhancing user experience in messaging platforms.</p>
 <h2 id="Complete-Code"><a href="#Complete-Code" class="headerlink" title="Complete Code"></a>Complete Code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> uiautomation <span class="keyword">import</span> WindowControl</span><br><span class="line"><span class="keyword">import</span> openai</span><br><span class="line"></span><br><span class="line">apiKey = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">template = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a function to handle the interaction with the GPT-3 model</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GPT</span>(<span class="params">text: <span class="built_in">str</span>, record: <span class="type">List</span>[<span class="built_in">dict</span>]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="comment"># Append the user&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: text&#125;)</span><br><span class="line">    <span class="comment"># Print the user&#x27;s message for debugging purposes</span></span><br><span class="line">    <span class="built_in">print</span>(text)</span><br><span class="line">    <span class="comment"># Set the OpenAI API key</span></span><br><span class="line">    openai.api_key = apiKey</span><br><span class="line">    <span class="comment"># Define the model ID</span></span><br><span class="line">    <span class="built_in">id</span> = <span class="string">&quot;gpt-3.5-turbo&quot;</span></span><br><span class="line">    <span class="comment"># Initialize a question string with the user&#x27;s text</span></span><br><span class="line">    question = <span class="string">&quot;###&quot;</span> + text + <span class="string">&quot;###&quot;</span></span><br><span class="line">    <span class="comment"># Create a completion using the OpenAI API</span></span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="built_in">id</span>,</span><br><span class="line">        messages=record,</span><br><span class="line">        temperature=<span class="number">0.1</span>,</span><br><span class="line">        top_p=<span class="number">0.1</span>,</span><br><span class="line">        max_tokens=<span class="number">2048</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># Extract the total token usage from the response for debugging purposes</span></span><br><span class="line">    usage = response.usage[<span class="string">&quot;total_tokens&quot;</span>]</span><br><span class="line">    <span class="comment"># Extract the content from the assistant&#x27;s message in the response</span></span><br><span class="line">    response = response[<span class="string">&quot;choices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;message&quot;</span>][<span class="string">&quot;content&quot;</span>]</span><br><span class="line">    <span class="comment"># Append the assistant&#x27;s message to the conversation record</span></span><br><span class="line">    record.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: response&#125;)</span><br><span class="line">    <span class="comment"># Return the assistant&#x27;s response</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Main function</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># Initialize the conversation with the user&#x27;s template</span></span><br><span class="line">    mem = [&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: template&#125;]</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># Create a WindowControl object for the &quot;微信&quot; window</span></span><br><span class="line">        wx = WindowControl(Name=<span class="string">&quot;微信&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(wx)</span><br><span class="line">        wx.SwitchToThisWindow()</span><br><span class="line">        <span class="comment"># Create a ListControl object for the &quot;会话&quot; list in the window</span></span><br><span class="line">        chat = wx.ListControl(Name=<span class="string">&quot;会话&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Find chat and combine:&quot;</span>, chat)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Main loop</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># Look for unread messages in the chat</span></span><br><span class="line">            unread = chat.TextControl(searchDepth=<span class="number">4</span>)</span><br><span class="line">            <span class="comment"># Wait until an unread message appears</span></span><br><span class="line">            <span class="keyword">while</span> <span class="keyword">not</span> unread.Exists(<span class="number">0</span>):</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Find unread:&quot;</span>, unread)</span><br><span class="line">            <span class="comment"># If there is an unread message, click on it</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> unread.Name: <span class="keyword">continue</span></span><br><span class="line">            unread.Click(simulateMove=<span class="literal">False</span>)</span><br><span class="line">            <span class="comment"># Extract the content of the last message</span></span><br><span class="line">            last_msg = wx.ListControl(Name=<span class="string">&quot;消息&quot;</span>).GetChildren()[-<span class="number">1</span>].Name</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Last message:&quot;</span>, last_msg)</span><br><span class="line">            <span class="comment"># Generate a reply using the GPT-3 model</span></span><br><span class="line">            reply = GPT(last_msg, mem)</span><br><span class="line">            <span class="comment"># If the conversation record has more than 6 messages, trim it down</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(mem) &gt; <span class="number">6</span>:</span><br><span class="line">                mem = mem[<span class="number">3</span>:]</span><br><span class="line">                mem = [&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: template&#125;] + mem</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;memory size:&quot;</span>, <span class="built_in">len</span>(mem))</span><br><span class="line">            <span class="comment"># Prepare the reply to be sent</span></span><br><span class="line">            ar = [reply]</span><br><span class="line">            <span class="comment"># If there is a reply, send it</span></span><br><span class="line">            <span class="keyword">if</span> ar:</span><br><span class="line">                wx.SwitchToThisWindow()</span><br><span class="line">                wx.SendKeys(ar[<span class="number">0</span>].replace(</span><br><span class="line">                    <span class="string">&quot;&#123;br&#125;&quot;</span>, <span class="string">&quot;&#123;Shift&#125;&#123;Enter&#125;&quot;</span>), waitTime=<span class="number">0</span>)</span><br><span class="line">                wx.SendKeys(<span class="string">&quot;&#123;Enter&#125;&quot;</span>, waitTime=<span class="number">0</span>)</span><br><span class="line">                wx.TextControl(SubName=ar[<span class="number">0</span>][:<span class="number">5</span>]).Click()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># If there is no reply, send a default message</span></span><br><span class="line">                wx.SwitchToThisWindow()</span><br><span class="line">                wx.SendKeys(<span class="string">&quot;Unknown&quot;</span>, waitTime=<span class="number">0</span>)</span><br><span class="line">                wx.SendKeys(<span class="string">&quot;&#123;Enter&#125;&quot;</span>, waitTime=<span class="number">0</span>)</span><br><span class="line">                wx.TextControl(SubName=last_msg[:<span class="number">5</span>]).Click()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Error: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the main function if this script is run directly</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
     </div>
-</article>
-
-
-    
-<nav id="article-nav">
-    
-    
-        <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)</div>
-        </a>
-    
-</nav>
-
-
-
-
 
     
     
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/openAI/" rel="tag"># openAI</a>
+          </div>
+
+        
 
 
-
-
-<!-- baidu url auto push script -->
-<script type="text/javascript">
-    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
-</script>     
-</section>
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            HuaiYuan_Jing &copy; 2023 
-            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
-            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
-            
-                <br>
-                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
-                &nbsp;|&nbsp;
-                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
-            
-        </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/24/A-Multifaceted-Translation-Tool-Integrating-GPT-3-5-Turbo-and-Wox-for-Seamless-Language-Processing-zh-CN/" rel="prev" title="A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)">
+      <i class="fa fa-chevron-left"></i> A Multifaceted Translation Tool: Integrating GPT-3.5 Turbo and Wox for Seamless Language Processing(zh-CN)
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-</footer>
-
-        
-
+      </footer>
     
-        
-<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+  </article>
+  
+  
+  
 
-        
-<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-        
-<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+          </div>
+          
 
-        
-<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-share.min.js"></script>
-
-        
-<script src="/libs/lightgallery/js/lg-video.min.js"></script>
-
-    
-    
-        
-<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-
-    
-    
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true,
-            TeX: {
-                equationNumbers: {
-                  autoNumber: 'AMS'
-                }
-            }
-        }
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+  }
 </script>
-<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstraction"><span class="nav-number">1.</span> <span class="nav-text">Abstraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project-Design"><span class="nav-number">2.</span> <span class="nav-text">Project Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GPT-Function"><span class="nav-number">2.1.</span> <span class="nav-text">GPT Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-Function"><span class="nav-number">2.2.</span> <span class="nav-text">Main Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execution"><span class="nav-number">3.</span> <span class="nav-text">Execution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-Code"><span class="nav-number">5.</span> <span class="nav-text">Complete Code</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">HuaiYuan_Jing</p>
+  <div class="site-description" itemprop="description">Display Website</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
 
 
 
-<!-- Custom Scripts -->
-
-<script src="/js/main.js"></script>
-
+      </div>
 
     </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HuaiYuan_Jing</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
