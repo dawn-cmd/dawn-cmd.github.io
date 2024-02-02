@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>HuaiYuan_Jing</title>
+  <title>Developer Biography</title>
   
-  <subtitle>HuaiYuan_Jing</subtitle>
+  <subtitle>action speaks louder than word</subtitle>
   <link href="https://dawn-cmd.github.io/atom.xml" rel="self"/>
   
   <link href="https://dawn-cmd.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://dawn-cmd.github.io/</id>
   
   <author>
-    <name>HuaiYuan_Jing</name>
+    <name>HuaiYuan Jing</name>
     
   </author>
   
