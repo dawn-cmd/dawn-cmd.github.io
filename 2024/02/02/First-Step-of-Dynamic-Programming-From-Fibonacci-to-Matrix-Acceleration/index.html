@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jetbrains+Mono:300,300italic,400,400italic,700,700italic%7CHeiti:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-material.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dawn-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Dynamic Programming In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration">
+<meta property="og:url" content="https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/index.html">
+<meta property="og:site_name" content="Developer Biography">
+<meta property="og:description" content="Dynamic Programming In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken ap">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T23:24:37.000Z">
+<meta property="article:modified_time" content="2024-02-03T04:14:30.260Z">
+<meta property="article:author" content="HuaiYuan Jing">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="ICPC">
+<meta property="article:tag" content="Recursion">
+<meta property="article:tag" content="Matrix">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/","path":"2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/","title":"First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration | Developer Biography</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Developer Biography" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Developer Biography</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">action speaks louder than word</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="Searching..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming"><span class="nav-number">2.</span> <span class="nav-text">The Fibonacci Sequence: A Gateway to Dynamic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">2.1.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State-Transition-Equation"><span class="nav-number">2.2.</span> <span class="nav-text">State Transition Equation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boundary"><span class="nav-number">2.3.</span> <span class="nav-text">Boundary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-of-Fibonacci-Sequence"><span class="nav-number">3.</span> <span class="nav-text">Implementation of Fibonacci Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement-Fibonacci-Recursively"><span class="nav-number">4.</span> <span class="nav-text">Implement Fibonacci Recursively</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HuaiYuan Jing" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">HuaiYuan Jing</p>
+  <div class="site-description" itemprop="description">history of blood and tear</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dawn-cmd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dawn-cmd" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ls.hyjing@gmail.com" title="E-Mail → mailto:ls.hyjing@gmail.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HuaiYuan Jing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Biography">
+      <meta itemprop="description" content="history of blood and tear">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration | Developer Biography">
+      <meta itemprop="description" content>
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-02 17:24:37 / Modified: 22:14:30" itemprop="dateCreated datePublished" datetime="2024-02-02T17:24:37-06:00">2024-02-02</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><blockquote>
+<p>In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken apart this way, decisions that span several points in time do often break apart recursively. Likewise, in computer science, if a problem can be solved optimally by breaking it into sub-problems and then recursively finding the optimal solutions to the sub-problems, then it is said to have optimal substructure.<br>If sub-problems can be nested recursively inside larger problems, so that dynamic programming methods are applicable, then there is a relation between the value of the larger problem and the values of the sub-problems. In the optimization literature this relationship is called the Bellman equation. –Wikipedia</p>
+</blockquote>
+<p>I don’t know how much you get from the description of Wikipedia. But I believe starting from an small example will be better.</p>
+<h2 id="The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming"><a href="#The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming" class="headerlink" title="The Fibonacci Sequence: A Gateway to Dynamic Programming"></a>The Fibonacci Sequence: A Gateway to Dynamic Programming</h2><p>At its core, the Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, starting from 0 and 1. Mathematically, it’s defined as:</p>
+<p>$$<br>F_i &#x3D; F_{i-1} + F_{i-2} (i &gt;&#x3D; 2)\<br>F_1 &#x3D; 1, F_0 &#x3D; 0<br>$$</p>
+<p>This simple formula lays the foundation for understanding the three pillars of dynamic programming: <strong>State</strong>, <strong>State Transition Equation</strong>, <strong>Boundary</strong></p>
+<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>In dynamic programming, the ‘state’ encapsulates the current situation in our problem-solving context. For the Fibonacci sequence, the state is represented by $F_i$, indicating the i-th number in the sequence. Understanding the state is crucial because it defines what we’re trying to compute.</p>
+<h3 id="State-Transition-Equation"><a href="#State-Transition-Equation" class="headerlink" title="State Transition Equation"></a>State Transition Equation</h3><p>The state transition equation describes how to transition from one state to the next. For the Fibonacci sequence, this is given by $F_i &#x3D; F_{i-1} + F_{i-2}$. It shows how the current state (F_i) is derived from the previous two states ($F_{i-1}$ and $F_{i-2}$). This equation is the heart of dynamic programming, guiding how we break down problems into smaller, manageable pieces.</p>
+<h3 id="Boundary"><a href="#Boundary" class="headerlink" title="Boundary"></a>Boundary</h3><p>Boundary conditions provide the starting points or base cases for our computation. For the Fibonacci sequence, these are $F_1$ &#x3D; 1 and $F_0$ &#x3D; 0. They’re essential because they prevent infinite recursion and ensure that our dynamic programming algorithm has a clear and definitive starting point.</p>
+<p>Concepts end here. Let’s start to code.</p>
+<h2 id="Implementation-of-Fibonacci-Sequence"><a href="#Implementation-of-Fibonacci-Sequence" class="headerlink" title="Implementation of Fibonacci Sequence"></a>Implementation of Fibonacci Sequence</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    fib = [<span class="number">0</span>] * (n + <span class="number">2</span>)</span><br><span class="line">    fib[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">2</span>):</span><br><span class="line">        fib[i] = fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>]</span><br><span class="line">    <span class="built_in">print</span>(fib[n])</span><br></pre></td></tr></table></figure>
+
+<p>Here, we’ve crafted a function named <code>main</code> that computes the nth Fibonacci number. This function prompts for an input, <code>n</code>, and initializes an array <code>fib</code> with a length of <code>n + 2</code> (extra two is just for safety) to store the Fibonacci sequence. It sets the second element (index 1) to 1, reflecting the sequence’s start. Through a loop, it then calculates each Fibonacci number by summing the two preceding numbers and stores them in the array. Finally, it prints the nth Fibonacci number.</p>
+<p>Let’s execute this function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">Execution time: <span class="number">1.889999839477241e-05</span> seconds</span><br></pre></td></tr></table></figure>
+
+<p>Great! We’ve successfully solved our first dynamic programming problem with this implementation. However, the code can be streamlined for better readability. Let’s work on making it more intuitive.Perfect, we just finished the first dynamic programming problem. But the code is still not straight forward enough. Let’s try to make it easier to read.</p>
+<h2 id="Implement-Fibonacci-Recursively"><a href="#Implement-Fibonacci-Recursively" class="headerlink" title="Implement Fibonacci Recursively"></a>Implement Fibonacci Recursively</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fib</span>(<span class="params">i</span>):</span><br><span class="line">    <span class="keyword">return</span> i <span class="keyword">if</span> i &lt; <span class="number">2</span> <span class="keyword">else</span> fib(i - <span class="number">1</span>) + fib(i - <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    <span class="built_in">print</span>(fib(n))  </span><br></pre></td></tr></table></figure>
+
+<p>This recursive implementation is more intuitive and direct, using just a single line of code to define the Fibonacci computation. Let’s execute this function:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">The fib function took <span class="number">2.1213817596435547</span> seconds to execute.</span><br></pre></td></tr></table></figure>
+
+<p>Okay, everything looks fine… Really?<br>Let’s see the third line of output.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The fib function took <span class="number">2.1213817596435547</span> seconds to execute.</span><br></pre></td></tr></table></figure>
+
+<p>The function runs extremely slow. What happened there? Let’s check how many times does function fib() be called.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>HuaiYuan Jing
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/" title="First Step of Dynamic Programming: From Fibonacci to Matrix Acceleration">https://dawn-cmd.github.io/2024/02/02/First-Step-of-Dynamic-Programming-From-Fibonacci-to-Matrix-Acceleration/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+              <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+              <a href="/tags/ICPC/" rel="tag"># ICPC</a>
+              <a href="/tags/Recursion/" rel="tag"># Recursion</a>
+              <a href="/tags/Matrix/" rel="tag"># Matrix</a>
+          </div>
+
+        
+  <div class="social-like a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_dd" target="_blank" rel="external nofollow noopener noreferrer" href="https://www.addtoany.com/share"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_button_linkedin"></a>
+      <a class="a2a_button_telegram"></a>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/25/An-Overview-of-a-Python-Script-for-Automated-Chat-Responses-using-OpenAI-s-GPT-3/" rel="prev" title="An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3">
+                  <i class="fa fa-angle-left"></i> An Overview of a Python Script for Automated Chat Responses using OpenAI's GPT-3
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">HuaiYuan Jing</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zindex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  <script src="/js/third-party/addtoany.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
