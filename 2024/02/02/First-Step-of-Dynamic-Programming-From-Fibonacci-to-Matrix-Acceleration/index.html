@@ -31,7 +31,7 @@
 <meta property="og:description" content="Dynamic Programming In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken ap">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-02T23:24:37.000Z">
-<meta property="article:modified_time" content="2024-02-03T20:37:22.478Z">
+<meta property="article:modified_time" content="2024-02-03T20:40:41.747Z">
 <meta property="article:author" content="HuaiYuan Jing">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="Dynamic Programming">
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-03 14:37:22" itemprop="dateModified" datetime="2024-02-03T14:37:22-06:00">2024-02-03</time>
+      <time title="Modified: 2024-02-03 14:40:41" itemprop="dateModified" datetime="2024-02-03T14:40:41-06:00">2024-02-03</time>
     </span>
 
   
@@ -269,7 +269,7 @@
     <div class="post-body" itemprop="articleBody"><h2 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h2><blockquote>
 <p>In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken apart this way, decisions that span several points in time do often break apart recursively. Likewise, in computer science, if a problem can be solved optimally by breaking it into sub-problems and then recursively finding the optimal solutions to the sub-problems, then it is said to have optimal substructure.<br>If sub-problems can be nested recursively inside larger problems, so that dynamic programming methods are applicable, then there is a relation between the value of the larger problem and the values of the sub-problems. In the optimization literature this relationship is called the Bellman equation. –Wikipedia</p>
 </blockquote>
-<p>I don’t know how much you get from the description of Wikipedia. But I believe starting from an small example will be better.</p>
+<p>I’m not sure how much you understood from Wikipedia’s description, but I think starting with a simple example would be better.</p>
 <h2 id="The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming"><a href="#The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming" class="headerlink" title="The Fibonacci Sequence: A Gateway to Dynamic Programming"></a>The Fibonacci Sequence: A Gateway to Dynamic Programming</h2><p>At its core, the Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, starting from 0 and 1. Mathematically, it’s defined as:</p>
 <p>$$<br>F_i &#x3D; F_{i-1} + F_{i-2} (i &gt;&#x3D; 2)\<br>F_1 &#x3D; 1, F_0 &#x3D; 0<br>$$</p>
 <p>This simple formula lays the foundation for understanding the three pillars of dynamic programming: <strong>State</strong>, <strong>State Transition Equation</strong>, <strong>Boundary</strong></p>
@@ -293,7 +293,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The fib function took <span class="number">2.1213817596435547</span> seconds to execute.</span><br></pre></td></tr></table></figure>
 
 <p>The function runs extremely slow. What happened there? Let’s check how many times does function fib() be called.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line">The fib function took <span class="number">3.8617589473724365</span> seconds to execute.</span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">The fib function was called <span class="number">29860703</span> times.</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">The fib function took <span class="number">3.8617589473724365</span> seconds to execute.</span><br><span class="line">The fib function was called <span class="number">29860703</span> times.</span><br></pre></td></tr></table></figure>
 
 <p>The observed slowdown in executing the recursive Fibonacci function, taking over 2 seconds to compute <code>fib(35)</code> and resulting in an astonishing <strong>29,860,703</strong> function calls, highlights a critical inefficiency inherent in the naive recursive approach. This inefficiency is primarily due to the excessive number of redundant calls for calculating the same Fibonacci numbers multiple times.</p>
 <p>To understand why so many calls are made, consider how the recursive function works for <code>fib(n)</code>: it calls <code>fib(n-1)</code> and <code>fib(n-2)</code>. Both of these calls then recursively invoke further fib calculations, leading to a combinatorial explosion of function calls. Many of these calls are repeated; for instance, <code>fib(2)</code> is calculated multiple times across different branches of the recursion tree.</p>
