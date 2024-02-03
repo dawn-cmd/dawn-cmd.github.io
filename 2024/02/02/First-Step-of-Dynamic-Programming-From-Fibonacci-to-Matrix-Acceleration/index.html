@@ -31,7 +31,7 @@
 <meta property="og:description" content="Dynamic Programming In both contexts it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner. While some decision problems cannot be taken ap">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-02T23:24:37.000Z">
-<meta property="article:modified_time" content="2024-02-03T04:14:30.260Z">
+<meta property="article:modified_time" content="2024-02-03T20:37:22.478Z">
 <meta property="article:author" content="HuaiYuan Jing">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="Dynamic Programming">
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming"><span class="nav-number">2.</span> <span class="nav-text">The Fibonacci Sequence: A Gateway to Dynamic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">2.1.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State-Transition-Equation"><span class="nav-number">2.2.</span> <span class="nav-text">State Transition Equation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boundary"><span class="nav-number">2.3.</span> <span class="nav-text">Boundary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-of-Fibonacci-Sequence"><span class="nav-number">3.</span> <span class="nav-text">Implementation of Fibonacci Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement-Fibonacci-Recursively"><span class="nav-number">4.</span> <span class="nav-text">Implement Fibonacci Recursively</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Fibonacci-Sequence-A-Gateway-to-Dynamic-Programming"><span class="nav-number">2.</span> <span class="nav-text">The Fibonacci Sequence: A Gateway to Dynamic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">2.1.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State-Transition-Equation"><span class="nav-number">2.2.</span> <span class="nav-text">State Transition Equation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boundary"><span class="nav-number">2.3.</span> <span class="nav-text">Boundary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementation-of-Fibonacci-Sequence"><span class="nav-number">3.</span> <span class="nav-text">Implementation of Fibonacci Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement-Fibonacci-Recursively"><span class="nav-number">4.</span> <span class="nav-text">Implement Fibonacci Recursively</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memorized-search"><span class="nav-number">5.</span> <span class="nav-text">Memorized search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rolling-array"><span class="nav-number">6.</span> <span class="nav-text">Rolling array</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,9 +239,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-02-02 17:24:37 / Modified: 22:14:30" itemprop="dateCreated datePublished" datetime="2024-02-02T17:24:37-06:00">2024-02-02</time>
+      <time title="Created: 2024-02-02 17:24:37" itemprop="dateCreated datePublished" datetime="2024-02-02T17:24:37-06:00">2024-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-03 14:37:22" itemprop="dateModified" datetime="2024-02-03T14:37:22-06:00">2024-02-03</time>
     </span>
 
   
@@ -287,6 +293,18 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The fib function took <span class="number">2.1213817596435547</span> seconds to execute.</span><br></pre></td></tr></table></figure>
 
 <p>The function runs extremely slow. What happened there? Let’s check how many times does function fib() be called.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line">The fib function took <span class="number">3.8617589473724365</span> seconds to execute.</span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">The fib function was called <span class="number">29860703</span> times.</span><br></pre></td></tr></table></figure>
+
+<p>The observed slowdown in executing the recursive Fibonacci function, taking over 2 seconds to compute <code>fib(35)</code> and resulting in an astonishing <strong>29,860,703</strong> function calls, highlights a critical inefficiency inherent in the naive recursive approach. This inefficiency is primarily due to the excessive number of redundant calls for calculating the same Fibonacci numbers multiple times.</p>
+<p>To understand why so many calls are made, consider how the recursive function works for <code>fib(n)</code>: it calls <code>fib(n-1)</code> and <code>fib(n-2)</code>. Both of these calls then recursively invoke further fib calculations, leading to a combinatorial explosion of function calls. Many of these calls are repeated; for instance, <code>fib(2)</code> is calculated multiple times across different branches of the recursion tree.</p>
+<h2 id="Memorized-search"><a href="#Memorized-search" class="headerlink" title="Memorized search"></a>Memorized search</h2><p>Now let’s try to solve the problem. To address this inefficiency, a technique known as memoization can be applied. Memoization is a form of caching where the results of expensive function calls are stored, so that if the same inputs occur again, the function can return the stored result instead of recalculating it. Applying memoization to the Fibonacci sequence means that once we calculate <code>fib(n)</code>, we store its value. If fib(n) is needed again, we simply retrieve the stored value instead of recalculating it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cache = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fib</span>(<span class="params">i</span>):</span><br><span class="line">    <span class="keyword">global</span> cache</span><br><span class="line">    <span class="keyword">if</span> cache[i] != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> cache[i]</span><br><span class="line">    cache[i] = i <span class="keyword">if</span> i &lt; <span class="number">2</span> <span class="keyword">else</span> fib(i - <span class="number">1</span>) + fib(i - <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> cache[i]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">global</span> cache</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    cache = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    result = fib(n)</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>Let’s run and check the performance.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">9227465</span></span><br><span class="line">The fib function took <span class="number">1.539999993838137e-05</span> seconds to execute.</span><br></pre></td></tr></table></figure>
+
+<p>This performance boost is due to the drastic reduction in the number of calls to the fib function, as each Fibonacci number is calculated only once. Now it has the same runtime as the method use array. But can we make it better?</p>
+<h2 id="Rolling-array"><a href="#Rolling-array" class="headerlink" title="Rolling array"></a>Rolling array</h2><p>To be continued…</p>
 
     </div>
 
