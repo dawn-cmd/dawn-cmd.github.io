@@ -161,6 +161,41 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://dawn-cmd.github.io/tags/DFS/</loc>
+    <lastmod>2024-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dawn-cmd.github.io/tags/Disjoint-Union-Set/</loc>
+    <lastmod>2024-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dawn-cmd.github.io/tags/Kattis/</loc>
+    <lastmod>2024-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dawn-cmd.github.io/tags/Connective/</loc>
+    <lastmod>2024-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://dawn-cmd.github.io/tags/Rust/</loc>
+    <lastmod>2024-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -172,48 +207,6 @@
   
   <url>
     <loc>https://dawn-cmd.github.io/categories/data-structure-algorithm/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/Disjoint-Union-Set/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/Disjoint-Union-Set/ICPC/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/Disjoint-Union-Set/ICPC/Kattis/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/Disjoint-Union-Set/ICPC/Kattis/Connective/</loc>
-    <lastmod>2024-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://dawn-cmd.github.io/categories/DFS/Disjoint-Union-Set/ICPC/Kattis/Connective/Rust/</loc>
     <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
